@@ -1,0 +1,26 @@
+{
+  "name": "practice-testcafe",
+  "version": "1.0.0",
+  "description": "Practice TestCafe",
+  "main": "index.js",
+  "scripts": {
+    "test": "testcafe chrome index.js",
+    "test:headless": "testcafe 'chrome:headless' index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cgomezb/practice-testcafe.git"
+  },
+  "keywords": [
+    "testcafe"
+  ],
+  "author": "Cesar Gomez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cgomezb/practice-testcafe/issues"
+  },
+  "homepage": "https://github.com/cgomezb/practice-testcafe#readme",
+  "devDependencies": {
+    "testcafe": "*"
+  }
+}
