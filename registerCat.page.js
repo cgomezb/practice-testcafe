@@ -1,35 +1,51 @@
-import { Selector } from 'testcafe';
+import { t, Selector } from 'testcafe';
 
-export class RegisterCatPage {
-  get catNameField() {
-    return Selector('input[name="cat-name"]');
+class RegisterCatPage {
+  constructor() {
+    this.registerAnimalOption    = Selector('main a');
+    this.catNameField            = Selector('input[name="cat-name"]');
+    this.raceSelectField         = Selector('#demo-simple-select');
+    this.raceOptionField         = Selector('ul li[data-value="Criollo"]');
+    this.genderField             = Selector('input[type="radio"][value="Male"]');
+    this.vaccineDistemperField   = Selector('input[type="checkbox"][name="moquillo"]');
+    this.vaccineNoneField        = Selector('input[type="checkbox"][name="ninguna"]');
+    this.termsAndConditionsField = Selector('input[type="checkbox"]:not([name])');
+    this.registerAction          = Selector('button[type="submit"]');
   }
 
-  get raceSelectField() {
-    return Selector('#demo-simple-select');
+  async selectRegisterAnimal() {
+    await t
+      .wait(3000)
+      .click(this.registerAnimalOption);
   }
 
-  get raceOptionField() {
-    return Selector('ul li[data-value="Criollo"]');
+  async typeCatName(name) {
+    await t.typeText(this.catNameField, name);
   }
 
-  get genderField() {
-    return Selector('input[type="radio"][value="Male"]');
+  async selectRace() {
+    await t
+      .click(this.raceSelectField)
+      .click(this.raceOptionField);
   }
 
-  get vaccineDistemperField() {
-    return Selector('input[type="checkbox"][name="moquillo"]');
+  async selectGender() {
+    await t.click(this.genderField);
   }
 
-  get vaccineNoneField() {
-    return Selector('input[type="checkbox"][name="ninguna"]');
+  async selectVaccineDistemper() {
+    await t
+      .click(this.vaccineDistemperField)
+      .click(this.vaccineNoneField);
   }
 
-  get termsAndConditionsField() {
-    return Selector('input[type="checkbox"]:not([name])');
+  async selectTermsAndConditions() {
+    await t.click(this.termsAndConditionsField);
   }
 
-  get registerAction() {
-    return Selector('button[type="submit"]');
+  async clickSubmit() {
+    await t.click(this.registerAction);
   }
 }
+
+export default new RegisterCatPage();
